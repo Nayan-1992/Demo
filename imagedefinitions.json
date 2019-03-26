@@ -1,11 +1,11 @@
 {
   "taskDefinition": {
-    "family": "hello-world",
+    "family": "nginx",
     "containerDefinitions": [
       {
         "name": "test",
-        "image": "236077662949.dkr.ecr.us-east-1.amazonaws.com/test:6a57b99",
-        "cpu": 100,
+        "image": "236077662949.dkr.ecr.us-east-1.amazonaws.com/test:",
+        "cpu": 128,
         "portMappings": [
           {
             "protocol": "tcp",
