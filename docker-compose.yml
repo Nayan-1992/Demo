@@ -1,1 +1,8 @@
-FROM ubuntu:18.04
+version: '3'
+  web:
+    image: php:7.3-apache
+    build: ./webapp
+    container_name: php_web
+    restart: always
+    ports:
+      - "8080:80"
