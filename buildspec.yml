@@ -9,7 +9,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t mynginx:latest .
-      - docker tag mynginx:latest 236077662949.dkr.ecr.us-east-1.amazonaws.com/test
+      - docker tag mynginx:latest 236077662949.dkr.ecr.us-east-1.amazonaws.com/test:latest
   post_build:
     commands:
       - echo Build completed on `date`
