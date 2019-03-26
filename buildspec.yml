@@ -14,4 +14,4 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 236077662949.dkr.ecr.us-east-1.amazonaws.com/test/mynginx:latest
+      - docker push 236077662949.dkr.ecr.us-east-1.amazonaws.com/test
