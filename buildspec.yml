@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - echo Run unit test
-      - docker-compose run web node
+      - docker-compose
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $IMAGE_REPO_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION .
