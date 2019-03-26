@@ -6,8 +6,9 @@ phases:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - echo Run unit test
-      - docker-compose -f docker-compose.yml
+      - docker build -t test .
+      - docker tag test:latest 236077662949.dkr.ecr.us-east-1.amazonaws.com/test:latest
+      - docker push 236077662949.dkr.ecr.us-east-1.amazonaws.com/test:latest
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $IMAGE_REPO_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION .
