@@ -19,8 +19,4 @@ phases:
       - echo Pushing the Docker images...
       #- docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Writing image definitions file...
-      - printf '[{"name":"test","imageUri":"236077662949.dkr.ecr.us-east-1.amazonaws.com/test:latest"}]' > imagedefinitions.json
- artifacts:
-     files: 
-      - imagedefinitions.json
+      - aws ecs update-service --cluster ECS-Cluster --service nginx --task-definition nginx
