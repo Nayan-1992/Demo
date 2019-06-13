@@ -19,6 +19,12 @@ phases:
       - echo Pushing the Docker images...
       #- docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+      # gets the latest task definition
+      - export TASK_DEF=$(aws ecs describe-task-definition --task-definition "test-task")
+      # gets the specific containerDefinitions array and exports to a json format which is needed for the register-task-definition function
+      - export CONTAINER_DEFS=$(echo $TASK_DEF | jq '.taskDefinition.containerDefinitions' | awk -v ORS= -v OFS= '{$1=$1}1')
+      # creates a new task definition from the previous definition details
+      - aws ecs register-task-definition --family "test-task" --container-definitions $CONTAINER_DEFS
       - aws ecs update-service --cluster webapp --service nginx --task-definition test-task
 artifacts:
    files:
