@@ -19,7 +19,7 @@ phases:
       - echo Pushing the Docker images...
       #- docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      #- aws ecs update-service --cluster ECS-Cluster --service nginx --task-definition nginx
+      - aws ecs update-service --cluster webapp --service nginx --task-definition test-task
 artifacts:
    files:
     - imagedefinitions.json
