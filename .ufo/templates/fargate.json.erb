@@ -1,7 +1,7 @@
 {
   "family": "<%= @family %>",
-  "requiresCompatibilities": ["EC2"],
-  "networkMode": "bridge",
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
   "cpu": "<%= @cpu %>",
   "memory": "<%= @memory %>",
   "containerDefinitions": [
