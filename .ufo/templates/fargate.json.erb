@@ -1,8 +1,7 @@
 {
   "family": "<%= @family %>",
   "requiresCompatibilities": ["FARGATE"],
-  "networkMode": "awsvpc",
-  "executionRoleArn": "<%= @execution_role_arn || raise("@execution_role_arn needs to be set") %>",
+  "networkMode": "default",
   "cpu": "<%= @cpu %>",
   "memory": "<%= @memory %>",
   "containerDefinitions": [
@@ -20,16 +19,6 @@
       "command": <%= @command.to_json %>,
       <% if @environment %>
       "environment": <%= @environment.to_json %>,
-      <% end %>
-      <% if @awslogs_group %>
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "<%= @awslogs_group %>",
-          "awslogs-region": "<%= @awslogs_region || 'us-east-1' %>",
-          "awslogs-stream-prefix": "<%= @awslogs_stream_prefix %>"
-        }
-      },
       <% end %>
       "essential": true
     }
