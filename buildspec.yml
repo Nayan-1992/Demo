@@ -14,6 +14,8 @@ phases:
       - cat /etc/*release*
       - whoami
       - gem install --no-document ufo
+      - ECR_REPO=033484327401.dkr.ecr.us-east-1.amazonaws.com/test
+      - ufo init --image $ECR_REPO --launch-type fargate --execution-role-arn arn:aws:iam::033484327401:role/service-role/codebuild-TestProject-service-role
       # - configure ~/.aws/config default
   build:
     commands:
